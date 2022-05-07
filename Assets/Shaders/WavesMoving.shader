@@ -1,6 +1,5 @@
 Shader "Practica/WavesMoving"
 {
-
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
@@ -43,7 +42,7 @@ Shader "Practica/WavesMoving"
             float4 frag(vertexOutput i) : COLOR
             {
                 //Calcular el movimiento
-                return tex2D(_ColorMap, i.tex + float2(0, sin(i.position.x / 30 + _Time[1]) / 30));
+                return tex2D(_ColorMap, i.tex + float2(0, sin(i.position.x / 30 + _Time[2]) / 30));
             }
 
             ENDCG
