@@ -10,10 +10,10 @@ public class MapElementsPlacement : MonoBehaviour
     public GameObject home;
     public GameObject acorn;
 
-    private float maxX = 5.5f;
-    private float minX = -5.5f;
-    private float maxZ = 5.5f;
-    private float minZ = -5.2f;
+    private float maxX = 5f;
+    private float minX = -5f;
+    private float maxZ = 5f;
+    private float minZ = -5f;
 
     private Vector3 homePos;
 
@@ -29,10 +29,10 @@ public class MapElementsPlacement : MonoBehaviour
     private void PlaceThings()
     {
         homePos.x = Random.Range(minX, maxX);
-        homePos.z = Random.Range(minZ, maxZ);
-        homePos.y = -0.35f;
+        homePos.z = Random.Range(0, maxZ);
+        homePos.y = 0.7325617f;
 
-        Instantiate(home, homePos, Quaternion.identity);
+        Instantiate(home, homePos, new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f));
         
         placeAcorn();
 
@@ -70,7 +70,7 @@ public class MapElementsPlacement : MonoBehaviour
             }
         } while (!validPos);
 
-        Instantiate(mushrom, new Vector3(randX, 0.2f, randZ), new Quaternion(0.707106829f, 0, 0, 0.707106829f));
+        Instantiate(mushrom, new Vector3(randX, -0.3061871f, randZ), new Quaternion(0.707106829f, 0, 0, 0.707106829f));
 
     }
 
@@ -97,7 +97,7 @@ public class MapElementsPlacement : MonoBehaviour
             }
         } while (!validPos);
 
-        Instantiate(badMushrom, new Vector3(randX, 0.2f, randZ), new Quaternion(0.707106829f, 0, 0, 0.707106829f));
+        Instantiate(badMushrom, new Vector3(randX, -0.3061871f, randZ), new Quaternion(0.707106829f, 0, 0, 0.707106829f));
 
     }
 
