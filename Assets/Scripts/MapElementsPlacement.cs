@@ -9,6 +9,7 @@ public class MapElementsPlacement : MonoBehaviour
     public GameObject badMushrom;
     public GameObject home;
     public GameObject acorn;
+    //public GameObject squirrel;
 
     private float maxX = 5f;
     private float minX = -5f;
@@ -16,6 +17,8 @@ public class MapElementsPlacement : MonoBehaviour
     private float minZ = -5f;
 
     private Vector3 homePos;
+    private Vector3 squirrelPos;
+
 
     private int numMushrooms = 6;
     private int numBadMushrooms = 4;
@@ -28,12 +31,9 @@ public class MapElementsPlacement : MonoBehaviour
 
     private void PlaceThings()
     {
-        homePos.x = Random.Range(minX, maxX);
-        homePos.z = Random.Range(0, maxZ);
-        homePos.y = 0.7325617f;
+        squirrelPos = new Vector3(0f, 0.370000005f, -3.07999992f);
 
-        Instantiate(home, homePos, new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f));
-        
+        placeHome();        
         placeAcorn();
 
         for (int i=0;i < numMushrooms; i++)
@@ -125,6 +125,32 @@ public class MapElementsPlacement : MonoBehaviour
         } while (!validPos);
 
         Instantiate(acorn, new Vector3(randX, 0.2f, randZ), Quaternion.identity);
+
+    }
+
+    private void placeHome()
+    {
+        homePos.y = 0.7325617f;
+
+        bool validPos = false;
+        do
+        {
+            homePos.x = Random.Range(minX, maxX);
+            if (homePos.x <= (squirrelPos.x + 2) || homePos.x >= (squirrelPos.x - 2))
+            {
+                validPos = true;
+            }
+        } while (!validPos);
+        do
+        {
+            homePos.z = Random.Range(0, maxZ);
+            if (homePos.z <= (squirrelPos.z + 2) || homePos.z >= (squirrelPos.z - 2))
+            {
+                validPos = true;
+            }
+        } while (!validPos);
+
+        Instantiate(home, homePos, new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f));
 
     }
 }

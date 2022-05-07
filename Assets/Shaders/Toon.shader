@@ -1,6 +1,6 @@
 ﻿Shader "Practica/Toon"
 {
-	//https://roystan.net/articles/toon-shader.html
+	//Hecho siguiendo el tutorial https://roystan.net/articles/toon-shader.html
 
 	Properties
 	{
